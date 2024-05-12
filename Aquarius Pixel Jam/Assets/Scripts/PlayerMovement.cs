@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float horizontal;
     public float vertical;
+    public float neutral;
     float moveLimiter = 0.7f;
 
     public float runSpeed = 0.5f;
@@ -16,22 +17,22 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-      //myAnimator = gameObject.GetComponent<Animator>();
+      myAnimator = gameObject.GetComponent<Animator>();
 
     }
 
     void Update()
     {
         // Gives a value between -1 and 1 and check anims
-        //CheckAnimation();
+        CheckAnimation();
         horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
         vertical = Input.GetAxisRaw("Vertical"); // -1 is down
     } 
 
     void CheckAnimation()
     {
-      //myAnimator.SetFloat("horizontal", horizontal);
-      //myAnimator.SetFloat("vertical", vertical);
+        myAnimator.SetFloat("horizontal", horizontal);
+        myAnimator.SetFloat("vertical", vertical);
     }
 
     void FixedUpdate()
