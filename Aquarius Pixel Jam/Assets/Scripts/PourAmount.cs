@@ -8,6 +8,8 @@ public class PourAmount : MonoBehaviour
     public GameObject water;
     int waterAmount = 0;
     public Text FillScore;
+    public int filltotal = 200;
+    float percent;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,8 @@ public class PourAmount : MonoBehaviour
      private void  OnParticleCollision()
     {
         waterAmount++;
-        Debug.Log(waterAmount);
-       // FillScore.GetComponent<Text>().text = (waterAmount);
-
+        percent = ((float)waterAmount / filltotal) * 100f;
+        Debug.Log(percent); 
+       FillScore.text =  percent.ToString("F1") + "%";
     }
 }
