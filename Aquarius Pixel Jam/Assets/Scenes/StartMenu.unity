@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195004703}
   - component: {fileID: 195004702}
+  - component: {fileID: 195004705}
   m_Layer: 0
   m_Name: ParticleController
   m_TagString: Untagged
@@ -170,6 +171,19 @@ Transform:
   - {fileID: 365629975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195004705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195004701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20c1c008b04ac5419caafd49ecc7bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  water: {fileID: 365629971}
 --- !u!1 &365629971 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8046993680128507132, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
@@ -757,6 +771,7 @@ GameObject:
   - component: {fileID: 2068432253}
   - component: {fileID: 2068432252}
   - component: {fileID: 2068432254}
+  - component: {fileID: 2068432255}
   m_Layer: 0
   m_Name: FillSpace
   m_TagString: Untagged
@@ -796,7 +811,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.453125, y: -0.9399238}
+  m_Offset: {x: -0.4423703, y: -0.9399238}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -807,7 +822,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4504223, y: 1.0933257}
+  m_Size: {x: 3.2783458, y: 1.0933257}
   m_EdgeRadius: 0
 --- !u!4 &2068432253
 Transform:
@@ -837,6 +852,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water: {fileID: 365629971}
+--- !u!50 &2068432255
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068432251}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &7780460839077106820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -866,6 +908,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: ringBufferMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: ShapeModule.angle
       value: 29.193804
       objectReference: {fileID: 0}
@@ -878,8 +924,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.enter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.inside
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 0.36194786
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.radiusScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -898,13 +960,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.colliderQueryMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.primitives.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 398279932255428012, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: TriggerModule.primitives.Array.data[0]
+      value: 
+      objectReference: {fileID: 2068432253}
     - target: {fileID: 2557918529176227526, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -948,6 +1026,10 @@ PrefabInstance:
     - target: {fileID: 8046993680128507132, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
       propertyPath: m_Name
       value: WaterSpill
+      objectReference: {fileID: 0}
+    - target: {fileID: 8046993680128507132, guid: 77b2d2435af9dc54ca43b97719fd7f9e, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

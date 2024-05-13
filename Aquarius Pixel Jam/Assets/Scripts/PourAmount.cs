@@ -18,6 +18,7 @@ public class PourAmount : MonoBehaviour
     }
     void  OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Is this working?");
        if (other.gameObject == water)
        {
            Debug.Log("Water filled");
