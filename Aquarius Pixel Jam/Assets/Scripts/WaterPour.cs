@@ -11,6 +11,7 @@ public class WaterPour : MonoBehaviour
     void Start()
     {
        particleSystem = GetComponentInChildren<ParticleSystem>();
+       particleSystem.Stop();
     }
 
     // Update is called once per frame
@@ -20,11 +21,11 @@ public class WaterPour : MonoBehaviour
         emitter.transform.position = mousePosition;
 
         //Checks and pours water when mouse is held
-      if(Input.GetMouseButton(0))
+      if(Input.GetKeyDown(KeyCode.Space))
         {
             particleSystem.Play(); // Play the particle system
         }
-        else
+       if(Input.GetKeyUp(KeyCode.Space))
         {
             particleSystem.Stop(); // Stop the particle system
         }
