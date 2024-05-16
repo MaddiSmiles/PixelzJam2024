@@ -6,7 +6,6 @@ public class WaterPour : MonoBehaviour
 {
        private ParticleSystem particleSystem;
        public GameObject emitter;
-       public GameObject FillCup;
     // Start is called before the first frame update
     void Start()
     {

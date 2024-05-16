@@ -1,23 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject MiniGame;
+    public float time = 300f;
+    private float timer = 0f;
+    private bool gameOver = false;
+    public Text Clock;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = time; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameOver)
+        {
+            if (timer > 0f)
+            {
+                timer -= Time.deltaTime;
+                UpdateTimerUI(timer);
+                if (timer <= 0f)
+                {
+                    gameOver = true;
+                    Debug.Log("Game Over");
+                }
+            }
+        }
     }
-    public void FinishGame()
+
+    void UpdateTimerUI(float timeRemaining)
     {
-        MiniGame.SetActive(false);
+        int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+        int seconds = Mathf.FloorToInt(timeRemaining % 60f);
+        string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+        Clock.text = timeString;
     }
 }
