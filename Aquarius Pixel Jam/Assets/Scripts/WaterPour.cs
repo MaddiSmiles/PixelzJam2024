@@ -6,11 +6,16 @@ public class WaterPour : MonoBehaviour
 {
        private ParticleSystem particleSystem;
        public GameObject emitter;
+       public GameObject Arm;
+       public Sprite ArmOn;
+       public Sprite ArmOff;
+       private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
        particleSystem = GetComponentInChildren<ParticleSystem>();
        particleSystem.Stop();
+       spriteRenderer = Arm.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -23,10 +28,12 @@ public class WaterPour : MonoBehaviour
       if(Input.GetKeyDown(KeyCode.Space))
         {
             particleSystem.Play(); // Play the particle system
+           spriteRenderer.sprite = ArmOn;
         }
        if(Input.GetKeyUp(KeyCode.Space))
         {
             particleSystem.Stop(); // Stop the particle system
+            spriteRenderer.sprite = ArmOff;
         }
      }
 
