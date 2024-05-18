@@ -30,4 +30,9 @@ public class WaterPour : MonoBehaviour
         }
      }
 
+    public void StopWater()
+    {
+        particleSystem.Stop();
+    }
+
 }
