@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private float timer = 0f;
     private bool gameOver = false;
     public Text Clock;
+    public Text TipText;
+    public int Tips;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,8 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        TipText.text = "$" + Tips.ToString();
         if (!gameOver)
         {
             if (timer > 0f)

@@ -10,10 +10,14 @@ public class PourAmount : MonoBehaviour
     public Text FillScore;
     public int filltotal = 200;
     float percent;
+    public int pourTip;
+    public int totalTip;
+    public GameObject table;
+    public GameObject GameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pourTip = 5;
     }
 
     // Update is called once per frame
@@ -26,6 +30,28 @@ public class PourAmount : MonoBehaviour
         waterAmount++;
         percent = ((float)waterAmount / filltotal) * 100f;
         Debug.Log(percent); 
-       FillScore.text =  percent.ToString("F1") + "%";
+        if(percent > 102)
+        {
+            FillScore.text = ("OverFlowed!");
+            pourTip = 3;
+        }
+        else
+        {
+            FillScore.text =  percent.ToString("F1") + "%";
+        }
+
+        if (percent > 95 && percent < 100)
+        {
+            pourTip = 7;
+        }
+    }
+    public void FinishPour()
+    {
+       pourTip -=  table.GetComponent<SpillAmount>().spillTip;
+       GameManager.GetComponent<GameManager>().Tips += pourTip;
+       pourTip = 5;
+       waterAmount = 0;
+        FillScore.text = "0%";
+
     }
 }

@@ -13,7 +13,8 @@ public class Customers : MonoBehaviour
     public Sprite sitting;
     public GameObject cup;
     public int vol;
-
+    public GameObject WaterMiniGame;
+    public GameObject MainGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,5 +66,9 @@ public class Customers : MonoBehaviour
     void StartMiniGame()
     {
         Debug.Log(Name + " is thirsty!");
+        MainGame.SetActive(false);
+        WaterMiniGame.SetActive(true);
+        WaterMiniGame.GetComponent<WaterMiiniGame>().ResetMiniGame();
+
     }
 }

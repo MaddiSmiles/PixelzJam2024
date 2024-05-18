@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class SpillAmount : MonoBehaviour
 {   
-    int spillAmount = 0;
+    public int spillAmount = 0;
     public Text SpillScore;
     public int errorAmount;
+    public int spillTip = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,11 @@ public class SpillAmount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        int spillTip = (spillAmount / 30)*(-1);
     }
      private void  OnParticleCollision()
     {
         spillAmount++;
-      SpillScore.text = "Split: " +spillAmount.ToString();
+      SpillScore.text = "Spilt: " +spillAmount.ToString();
     }
 }
