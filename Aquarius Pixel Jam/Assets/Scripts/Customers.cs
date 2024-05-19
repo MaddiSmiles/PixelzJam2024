@@ -35,6 +35,10 @@ public class Customers : MonoBehaviour
             if (bubbleAnim.GetBool("IsEnter"))
             {
                 StartMiniGame();
+                 if (Random.Range(0, 3) == 0) // 1/3 chance
+                {
+                    Enter();
+                }
             }
         }
     }

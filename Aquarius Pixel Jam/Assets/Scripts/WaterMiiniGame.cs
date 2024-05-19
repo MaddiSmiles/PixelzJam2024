@@ -96,6 +96,10 @@ void Update()
         {
             CurrentCustomer = Cetus;
         }
+               else if (customerName == "FishDude")
+        {
+            CurrentCustomer = FishDude;
+        }
         else if (customerName == "Dumbo")
         {
             CurrentCustomer = Dumbo;
