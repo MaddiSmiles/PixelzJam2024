@@ -21,6 +21,13 @@ public class WaterMiiniGame : MonoBehaviour
     public GameObject Axolotl;
     public GameObject Wife;
     public GameObject Cetea;
+    public GameObject Cetus;
+    public GameObject Dumbo;
+    public GameObject FishDude;
+    public GameObject Hippocampi;
+    public GameObject Nessie;
+    public GameObject SeaMonkey;
+    public GameObject Siren;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +91,30 @@ void Update()
         else if (customerName == "Cetea")
         {
             CurrentCustomer = Cetea;
+        }
+        else if (customerName == "Cetus")
+        {
+            CurrentCustomer = Cetus;
+        }
+        else if (customerName == "Dumbo")
+        {
+            CurrentCustomer = Dumbo;
+        }
+        else if (customerName == "Hippocampi")
+        {
+            CurrentCustomer = Hippocampi;
+        }
+        else if (customerName == "Nessie")
+        {
+            CurrentCustomer = Nessie;
+        }
+        else if (customerName == "SeaMonkey")
+        {
+            CurrentCustomer = SeaMonkey;
+        }
+        else if (customerName == "Siren")
+        {
+            CurrentCustomer = Siren;
         }
 
         Customers customerComponent = CurrentCustomer.GetComponent<Customers>();

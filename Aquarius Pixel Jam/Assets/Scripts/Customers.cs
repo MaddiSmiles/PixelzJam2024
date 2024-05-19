@@ -16,6 +16,7 @@ public class Customers : MonoBehaviour
     public GameObject WaterMiniGame;
     public GameObject MainGame;
     public GameObject bubbleObject;
+    private bool isInside = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Customers : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         walkAnim = GetComponent<Animator>();
         bubbleAnim = bubbleObject.GetComponent<Animator>();
+        StartCoroutine(CheckToEnter());
     }
 
     // Update is called once per frame
@@ -37,12 +39,34 @@ public class Customers : MonoBehaviour
         }
     }
 
+      private IEnumerator CheckToEnter()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(30f);
+
+            if (!isInside)
+            {
+                if (Random.Range(0, 3) == 0) // 1/3 chance
+                {
+                    Enter();
+                }
+            }
+        }
+    }
+
+    private void Enter()
+    {
+        walkAnim.SetTrigger("Enter");
+    }
+
     public void StartOrder()
     {
         spriteRenderer.sprite = sitting;
         Debug.Log(Name + " is ready to order!");
         walkAnim.enabled = false;
         bubbleAnim.SetTrigger("bubbleAppear");
+        isInside = true;
     }
 
     // OnTriggerEnter is called when the Collider other enters the trigger
