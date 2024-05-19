@@ -7,20 +7,21 @@ public class Customers : MonoBehaviour
     public string Name;
     public bool isBig;
     public Animator walkAnim;
-    private Animator bubbleAnim;
-    int seatChosen = 1;
+    public Animator bubbleAnim;
     private SpriteRenderer spriteRenderer;
     public Sprite sitting;
+    public Sprite head;
     public GameObject cup;
     public int vol;
     public GameObject WaterMiniGame;
     public GameObject MainGame;
+    public GameObject bubbleObject;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         walkAnim = GetComponent<Animator>();
-        GameObject bubbleObject = GameObject.Find("seat" + seatChosen + "Bubble");
         bubbleAnim = bubbleObject.GetComponent<Animator>();
     }
 
@@ -68,7 +69,17 @@ public class Customers : MonoBehaviour
         Debug.Log(Name + " is thirsty!");
         MainGame.SetActive(false);
         WaterMiniGame.SetActive(true);
+        walkAnim.SetBool("Leaving", true);
+        cup.SetActive(true);
         WaterMiniGame.GetComponent<WaterMiiniGame>().ResetMiniGame();
+        WaterMiniGame.GetComponent<WaterMiiniGame>().customerSetUp(Name);
 
+    }
+    public void WalkBack()
+    {
+        bubbleAnim.SetBool("isLeave",true);
+        walkAnim.enabled = true;
+        spriteRenderer.flipX = false;
+        
     }
 }

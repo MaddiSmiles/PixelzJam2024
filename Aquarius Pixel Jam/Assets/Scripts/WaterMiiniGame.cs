@@ -12,6 +12,16 @@ public class WaterMiiniGame : MonoBehaviour
     public int miniTipTotal = 0;
     public GameObject MainGame;
     public GameObject spillsCount;
+    public GameObject ConversationManager;
+    public string CustomerName;
+    public GameObject CurrentCustomer;
+    public GameObject Cup;
+    public GameObject UIHead;
+    private Sprite head;
+    public GameObject Axolotl;
+    public GameObject Wife;
+    public GameObject Cetea;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +40,7 @@ void Update()
                 if (timer <= 0f)
                 {
                     MiniGameOver = true;
+                    FinishMiniGame();
                     Debug.Log("MiniGame Over");
                 }
             }
@@ -46,13 +57,38 @@ void Update()
     public  void FinishMiniGame()
     {
         MainGame.SetActive(true);
-         gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        Cup.SetActive(false);
+        Cup.GetComponent<PourAmount>().FinishPour();
+        CurrentCustomer.GetComponent<Customers>().WalkBack();
     }
     public void ResetMiniGame()
     {
         Debug.Log("game reset");
         spillsCount.GetComponent<SpillAmount>().spillAmount = 0;
         timer = 30f;
+        ConversationManager.SetActive(true);
 
+    }
+    public void customerSetUp(string customerName)
+    {
+        Debug.Log(customerName + " is ordering!");
+        if (customerName == "Axolotl")
+        {
+            CurrentCustomer = Axolotl;
+        }
+        else if (customerName == "AxolotlWife")
+        {
+            CurrentCustomer = Wife;
+        }
+        else if (customerName == "Cetea")
+        {
+            CurrentCustomer = Cetea;
+        }
+
+        Customers customerComponent = CurrentCustomer.GetComponent<Customers>();
+        Cup = customerComponent.cup;
+        head = customerComponent.head;
+        UIHead.GetComponent<Image>().sprite = head;
     }
 }

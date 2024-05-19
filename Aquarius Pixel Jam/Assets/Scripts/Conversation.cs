@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Conversation : MonoBehaviour
 {
-    private int bestChoice = 1;
-    private int goodChoice = 2;
+    private int bestChoice = 2;
+    private int goodChoice = 1;
     private int badChoice = 3;
 
     private Dictionary<int, KeyCode> choiceKeyMap;
@@ -29,14 +29,21 @@ public class Conversation : MonoBehaviour
         if (Input.GetKeyDown(choiceKeyMap[bestChoice]))
         {
             Debug.Log("Best choice answered!");
+            KillSelf();
         }
         else if (Input.GetKeyDown(choiceKeyMap[goodChoice]))
         {
             Debug.Log("Good choice answered!");
+            KillSelf();
         }
         else if (Input.GetKeyDown(choiceKeyMap[badChoice]))
         {
             Debug.Log("Bad choice answered!");
+            KillSelf();
         }
+    }
+    public void KillSelf()
+    {
+         gameObject.SetActive(false);
     }
 }
